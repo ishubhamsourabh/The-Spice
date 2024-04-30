@@ -10,13 +10,13 @@ import {
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-	apiKey: "AIzaSyALqbem-PanSc4wlD5axDz4PvOgHxY9fyU",
-	authDomain: "thespice-c8fc7.firebaseapp.com",
-	databaseURL: "https://thespice-c8fc7-default-rtdb.firebaseio.com",
-	projectId: "thespice-c8fc7",
-	storageBucket: "thespice-c8fc7.appspot.com",
-	messagingSenderId: "725495548509",
-	appId: "1:725495548509:web:7ff60522e91a38de3d9bb4",
+	// apiKey: "AIzaSyALqbem-PanSc4wlD5axDz4PvOgHxY9fyU",
+	// authDomain: "thespice-c8fc7.firebaseapp.com",
+	// databaseURL: "https://thespice-c8fc7-default-rtdb.firebaseio.com",
+	// projectId: "thespice-c8fc7",
+	// storageBucket: "thespice-c8fc7.appspot.com",
+	// messagingSenderId: "725495548509",
+	// appId: "1:725495548509:web:7ff60522e91a38de3d9bb4",
 };
 
 // Initialize Firebase
