@@ -15,29 +15,38 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-/**
- * Write user data to Firestore
- * @param {string} name 
- * @param {string} phoneNo 
- * @param {number} noOfPersons 
- * @param {string} date 
- * @param {string} time 
- * @param {string} message 
- * @returns {Promise<void>}
- */
+const writeUserData = async (name, phoneNo, noOfPersons, date, time, message) => {
+  try {
+      await addDoc(collection(db, "customers"), {
+          name: name,
+          phoneNo: phoneNo,
+          noOfPersons: noOfPersons,
+          date: date,
+          time: time,
+          message: message
+      });
+      console.log("Document written successfully.");
+  } catch (error) {
+      console.error("Error adding document: ", error);
+  }
+};
 
-// export async function writeUserData(customerId, name, phoneNo, noOfPersons, date, time, message) {
-//   try {
-//     const docRef = await addDoc(collection(db, "customers" + customerId), {
-//       name: name,
-//       phoneNo: phoneNo,
-//       noOfPersons: noOfPersons,
-//       date: date,
-//       time: time,
-//       message: message
-//     });
-//     console.log("Document written with ID: ", docRef.id);
-//   } catch (error) {
-//     console.error("Error adding document: ", error);
-//   }
-// }
+// Select the form element
+const form = document.getElementById("booking-form");
+
+// Add submit event listener to the form
+form.addEventListener("submit", function (event) {
+  // Prevent default form submission
+  event.preventDefault();
+
+  // Get form values
+  const name = document.getElementById("customer-name").value;
+  const phone = document.getElementById("customer-phone").value;
+  const person = document.getElementById("total-person").value;
+  const date = document.getElementById("reserve-date").value;
+  const time = document.getElementById("reserve-time").value;
+  const message = document.getElementById("customer-msg").value;
+
+  // Write form data to Firestore
+  writeUserData(name, phone, person, date, time, message);
+});
