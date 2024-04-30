@@ -1,43 +1,39 @@
-import {initializeApp} from "firebase/app";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+import {
+	getDatabase,
+	ref,
+	set,
+	get,
+	child,
+} from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
 
-// Your web app's Firebase configuration (make sure to keep this private!)
+// Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyDEX6DyzmjYYKpeIUTzehYQLsgihMBoe4U",
-      authDomain: "the-spice-243e3.firebaseapp.com",
-      projectId: "the-spice-243e3",
-      storageBucket: "the-spice-243e3.appspot.com",
-      messagingSenderId: "200491320458",
-      appId: "1:200491320458:web:d9e34dd4aaee24a1381973"
+	apiKey: "AIzaSyALqbem-PanSc4wlD5axDz4PvOgHxY9fyU",
+	authDomain: "thespice-c8fc7.firebaseapp.com",
+	databaseURL: "https://thespice-c8fc7-default-rtdb.firebaseio.com",
+	projectId: "thespice-c8fc7",
+	storageBucket: "thespice-c8fc7.appspot.com",
+	messagingSenderId: "725495548509",
+	appId: "1:725495548509:web:7ff60522e91a38de3d9bb4",
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
 
-/**
- * Write user data to Firestore
- * @param {string} name 
- * @param {string} phoneNo 
- * @param {number} noOfPersons 
- * @param {string} date 
- * @param {string} time 
- * @param {string} message 
- * @returns {Promise<void>}
- */
+//get ref to database services
+const db = getDatabase(app);
 
-// export async function writeUserData(customerId, name, phoneNo, noOfPersons, date, time, message) {
-//   try {
-//     const docRef = await addDoc(collection(db, "customers" + customerId), {
-//       name: name,
-//       phoneNo: phoneNo,
-//       noOfPersons: noOfPersons,
-//       date: date,
-//       time: time,
-//       message: message
-//     });
-//     console.log("Document written with ID: ", docRef.id);
-//   } catch (error) {
-//     console.error("Error adding document: ", error);
-//   }
-// }
+document.getElementById("bookbtn").addEventListener("click", function (e) {
+	e.preventDefault();
+	set(ref(db, "tables/" + document.getElementById("customer-name").value), {
+		name: document.getElementById("customer-name").value,
+		phone: document.getElementById("customer-phone").value,
+		person: document.getElementById("total-person").value,
+		date: document.getElementById("reserve-date").value,
+		time: document.getElementById("reserve-time").value,
+		message: document.getElementById("customer-msg").value,
+	});
+	alert("Table Booked Successfully");
+});

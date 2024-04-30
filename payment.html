@@ -108,7 +108,9 @@
 					$(".form").hide();
 					$(".qr_code").show();
 					var num = $(".number").val();
-					var link = "upi://pay?pa=ujjwalgupta5750-2@oksbi%26am=10%26tn=" + num;
+					var link =
+						"upi://pay?pa=ujjwalgupta5750-2@oksbi%26am=10%26tn=Phone no.:" +
+						num;
 					var upi =
 						"https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" +
 						link;

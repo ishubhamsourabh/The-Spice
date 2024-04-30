@@ -11,23 +11,23 @@ const time = document.getElementById("reserve-time");
 let tables = [];
 tables[0] = 15;
 tables[1] = 14;
-tables[2] = 13;
+tables[2] = 0;
 tables[3] = 12;
 tables[4] = 11;
 tables[5] = 10;
-tables[6] = 10;
+tables[6] = 0;
 tables[7] = 11;
 tables[8] = 12;
 tables[9] = 13;
-tables[10] = 14;
+tables[10] = 0;
 tables[11] = 15;
 
 function checkAvailability(n) {
 	if (tables[n] > 0) {
 		submitButton.addEventListener("click", () => {
 			tables[n] = tables[n] - 1;
-			alert("Table Booked Successfully! Tables left: " + tables[n]);
-			location.href = "payment.html";
+			// alert("Table Booked Successfully! Tables left: " + tables[n]);
+			// location.href = "payment.html";
 		});
 	} else if (tables[n] == 0) {
 		submitButton.addEventListener("click", () => {
