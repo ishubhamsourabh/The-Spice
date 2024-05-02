@@ -10,13 +10,13 @@ import {
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-	apiKey: "AIzaSyALqbem-PanSc4wlD5axDz4PvOgHxY9fyU",
-	authDomain: "thespice-c8fc7.firebaseapp.com",
-	databaseURL: "https://thespice-c8fc7-default-rtdb.firebaseio.com",
-	projectId: "thespice-c8fc7",
-	storageBucket: "thespice-c8fc7.appspot.com",
-	messagingSenderId: "725495548509",
-	appId: "1:725495548509:web:7ff60522e91a38de3d9bb4",
+  apiKey: "AIzaSyDEX6DyzmjYYKpeIUTzehYQLsgihMBoe4U",
+  authDomain: "the-spice-243e3.firebaseapp.com",
+  databaseURL: "https://the-spice-243e3-default-rtdb.firebaseio.com",
+  projectId: "the-spice-243e3",
+  storageBucket: "the-spice-243e3.appspot.com",
+  messagingSenderId: "200491320458",
+  appId: "1:200491320458:web:d9e34dd4aaee24a1381973"
 };
 
 // Initialize Firebase
@@ -37,3 +37,45 @@ document.getElementById("bookbtn").addEventListener("click", function (e) {
 	});
 	alert("Table is available for booking!");
 });
+
+// Reference to the documents in the database
+// function getData(){
+//   const dbRef = ref(db);
+//   // get(child(dbRef,'tables/')).then((snapshot)=>{
+//   //   if(snapshot.exist()){
+//   //     console.log(snapshot.val());
+//   //   }
+//   // }).catch((err)=>{
+//   //   console.log(err.code);
+//   // })
+//   const tablesRef = db.ref("tables/");
+//   tablesRef.once("value")
+//     .then((snapshot) => {
+//       if (snapshot.exists()) {
+//         console.log(snapshot.val());
+//       } else {
+//         console.log("No data available");
+//       }
+//     })
+//     .catch((error) => {
+//       console.error("Error fetching data: ", error);
+//     });
+// }
+// Reference to the documents in the database
+function getData(){
+  const dbRef = db;
+  const tablesRef = ref(dbRef, 'tables/');
+  get(tablesRef).then((snapshot) => {
+    if (snapshot.exists()) {
+      console.log(snapshot.val());
+    } else {
+      console.log("No data available");
+    }
+  }).catch((error) => {
+    console.error("Error fetching data: ", error);
+  });
+}
+
+getData();
+
+// Fetch documents once
