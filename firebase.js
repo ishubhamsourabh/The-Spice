@@ -25,17 +25,28 @@ const app = initializeApp(firebaseConfig);
 //get ref to database services
 const db = getDatabase(app);
 
-document.getElementById("bookbtn").addEventListener("click", function (e) {
+document.getElementById("bookbtn").addEventListener("click",async function (e) {
 	e.preventDefault();
-	set(ref(db, "tables/" + document.getElementById("customer-phone").value), {
-		name: document.getElementById("customer-name").value,
-		phone: document.getElementById("customer-phone").value,
-		person: document.getElementById("total-person").value,
-		date: document.getElementById("reserve-date").value,
-		time: document.getElementById("reserve-time").value,
-		message: document.getElementById("customer-msg").value,
-	});
-	alert("Table is available for booking!");
+  const data = await getData();
+  console.log(data);
+  if (data.length>=0 && data.length<=14){
+    const s = data.length;
+    console.log(s.toString());
+    await set(ref(db, "tables/" + document.getElementById("reserve-date").value + "/" + s), {
+      name: document.getElementById("customer-name").value,
+      phone: document.getElementById("customer-phone").value,
+      person: document.getElementById("total-person").value,
+      date: document.getElementById("reserve-date").value,
+      time: document.getElementById("reserve-time").value,
+      message: document.getElementById("customer-msg").value,
+    }).then(()=>{
+      alert("Table is available for booking!");
+      window.location.href = "./payment.html";
+    })
+  }
+  else {
+    alert("Table is not available for booking!");
+  }
 });
 
 // Reference to the documents in the database
@@ -62,20 +73,24 @@ document.getElementById("bookbtn").addEventListener("click", function (e) {
 //     });
 // }
 // Reference to the documents in the database
-function getData(){
+async function getData(){
   const dbRef = db;
-  const tablesRef = ref(dbRef, 'tables/');
-  get(tablesRef).then((snapshot) => {
+  const data=[];
+  const tablesRef = ref(dbRef, 'tables/'+ document.getElementById("reserve-date").value);
+  await get(tablesRef).then((snapshot) => {
     if (snapshot.exists()) {
-      console.log(snapshot.val());
+      snapshot.forEach((childSnapshot) => {
+        data.push(childSnapshot.val()); // Push each document's value individually
+      });
     } else {
       console.log("No data available");
     }
   }).catch((error) => {
     console.error("Error fetching data: ", error);
   });
+  return data;
 }
 
-getData();
+
 
 // Fetch documents once
