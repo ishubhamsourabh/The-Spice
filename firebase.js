@@ -9,15 +9,15 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
 
 // Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyDEX6DyzmjYYKpeIUTzehYQLsgihMBoe4U",
-  authDomain: "the-spice-243e3.firebaseapp.com",
-  databaseURL: "https://the-spice-243e3-default-rtdb.firebaseio.com",
-  projectId: "the-spice-243e3",
-  storageBucket: "the-spice-243e3.appspot.com",
-  messagingSenderId: "200491320458",
-  appId: "1:200491320458:web:d9e34dd4aaee24a1381973"
-};
+// const firebaseConfig = {
+//   apiKey: 
+//   authDomain: 
+//   databaseURL: 
+//   projectId: 
+//   storageBucket: 
+//   messagingSenderId: 
+//   appId: 
+// };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -49,29 +49,7 @@ document.getElementById("bookbtn").addEventListener("click",async function (e) {
   }
 });
 
-// Reference to the documents in the database
-// function getData(){
-//   const dbRef = ref(db);
-//   // get(child(dbRef,'tables/')).then((snapshot)=>{
-//   //   if(snapshot.exist()){
-//   //     console.log(snapshot.val());
-//   //   }
-//   // }).catch((err)=>{
-//   //   console.log(err.code);
-//   // })
-//   const tablesRef = db.ref("tables/");
-//   tablesRef.once("value")
-//     .then((snapshot) => {
-//       if (snapshot.exists()) {
-//         console.log(snapshot.val());
-//       } else {
-//         console.log("No data available");
-//       }
-//     })
-//     .catch((error) => {
-//       console.error("Error fetching data: ", error);
-//     });
-// }
+
 // Reference to the documents in the database
 async function getData(){
   const dbRef = db;
@@ -90,7 +68,3 @@ async function getData(){
   });
   return data;
 }
-
-
-
-// Fetch documents once
