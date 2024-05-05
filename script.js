@@ -192,9 +192,6 @@ form.addEventListener("submit", function (event) {
 
 	// Log the values (you can also send them to the server)
 	console.log("Name:", name);
-
-	// You can send these values to the server using AJAX or fetch API
-	// Example: sendFormData(name, phone, person, date, time, message);
 });
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -219,8 +216,5 @@ document.addEventListener("DOMContentLoaded", function () {
 		console.log("Date:", date);
 		console.log("Time:", time);
 		console.log("Message:", message);
-
-		// You can send these values to the server using AJAX or fetch API
-		// Example: sendFormData(name, phone, person, date, time, message);
 	});
 });
