@@ -42,7 +42,6 @@ document.getElementById("bookbtn").addEventListener("click",async function (e) {
       message: document.getElementById("customer-msg").value,
     }).then(()=>{
       alert("Table is available for booking!");
-      window.location.href = "./payment.html";
     })
   }
   else {
